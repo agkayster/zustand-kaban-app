@@ -1,9 +1,12 @@
 import './App.css';
+import Column from './components/Column';
 
 function App() {
 	return (
-		<h1 className='App text-3xl text-red-500 font-bold underline'>
-			Hello world!
+		<h1 className='App'>
+			<Column state='PLANNED' />
+			<Column state='ONGOING' />
+			<Column state='DONE' />
 		</h1>
 	);
 }
