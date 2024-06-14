@@ -16,8 +16,18 @@ function Column({ state }) {
 	// import our addTask from store.js and pass it into our button element
 	const addTask = useStore((store) => store.addTask);
 
+	const setDraggedTask = useStore((store) => store.setDraggedTask);
+	const draggedTask = useStore((store) => store.draggedTask);
+
 	return (
-		<div className='column'>
+		/* e.preventDefault(), makes sure the dragged item does not go back to default position */
+		<div
+			className='column'
+			onDragOver={(e) => e.preventDefault()}
+			onDrop={(e) => {
+				console.log(draggedTask);
+				setDraggedTask(null);
+			}}>
 			<div className='titleWrapper'>
 				{/* receive state from App.js */}
 				<p>{state}</p>
