@@ -9,3 +9,28 @@
 	text-align: center;
 	padding: 0.25rem;
 }
+
+.titleWrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.titleWrapper button {
+	 {
+		/* "all: unset", removes all default styling*/
+	}
+	all: unset;
+	background: white;
+	color: black;
+	width: 20%;
+	border-radius: 0.25rem;
+	padding: 0.25rem;
+	height: fit-content;
+	cursor: pointer;
+}
+
+.titleWrapper button:hover {
+	background: var(--COLOR-GRAY);
+	color: white;
+}
