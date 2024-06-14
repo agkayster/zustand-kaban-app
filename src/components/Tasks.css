@@ -13,6 +13,7 @@
 .bottomWrapper {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
 
 .status {
@@ -20,6 +21,10 @@
 	background: var(--COLOR-GRAY-LIGHT);
 	padding: 0.25rem;
 	border-radius: 0.25rem;
+}
+
+.deleteBtn {
+	cursor: pointer;
 }
 
 .PLANNED {
