@@ -11,6 +11,10 @@ const store = (set) => ({
 	// use the set function because we want to manipulate our tasks
 	addTask: (title, state) =>
 		set((store) => ({ tasks: [...store.tasks, { title, state }] })),
+	deleteTask: (title) =>
+		set((store) => ({
+			tasks: store.tasks.filter((task) => task.title !== title),
+		})),
 });
 // we just globalised our tasks
 export const useStore = create(store);
