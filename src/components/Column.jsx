@@ -1,5 +1,6 @@
 import './Column.css';
 import React, { useState } from 'react';
+import classNames from 'classnames';
 import Tasks from './Tasks';
 import { useStore } from '../store';
 // import { shallow } from 'zustand/shallow';
@@ -7,6 +8,7 @@ import { useStore } from '../store';
 function Column({ state }) {
 	const [text, setText] = useState('');
 	const [open, setOpen] = useState(false);
+	const [drop, setDrop] = useState(false);
 
 	// useStore should come from your store.js. filter our task.state that matches our state
 	const tasks = useStore((store) =>
@@ -23,9 +25,21 @@ function Column({ state }) {
 	return (
 		/* e.preventDefault(), makes sure the dragged item does not go back to default position */
 		<div
-			className='column'
-			onDragOver={(e) => e.preventDefault()}
+			/* this would change color to let us know if we can drop on this column */
+			className={classNames('column', { drop: drop })}
+			/* once we drag over, it would indicate if we can drop a task/item */
+			onDragOver={(e) => {
+				setDrop(true);
+				e.preventDefault();
+			}}
+			/*once we leave the indicator should disappear */
+			onDragLeave={(e) => {
+				setDrop(false);
+				e.preventDefault();
+			}}
+			/*once we drop the indicator should disappear */
 			onDrop={(e) => {
+				setDrop(false);
 				moveTask(draggedTask, state);
 				setDraggedTask(null);
 			}}>

@@ -8,6 +8,11 @@
 	border-radius: 0.25rem;
 	/* text-align: center; */
 	padding: 0.25rem;
+	border: dashed transparent 4px;
+}
+
+.column.drop {
+	border-color: white;
 }
 
 .titleWrapper {
