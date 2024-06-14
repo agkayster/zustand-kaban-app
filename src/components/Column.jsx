@@ -18,6 +18,7 @@ function Column({ state }) {
 
 	const setDraggedTask = useStore((store) => store.setDraggedTask);
 	const draggedTask = useStore((store) => store.draggedTask);
+	const moveTask = useStore((store) => store.moveTask);
 
 	return (
 		/* e.preventDefault(), makes sure the dragged item does not go back to default position */
@@ -25,7 +26,7 @@ function Column({ state }) {
 			className='column'
 			onDragOver={(e) => e.preventDefault()}
 			onDrop={(e) => {
-				console.log(draggedTask);
+				moveTask(draggedTask, state);
 				setDraggedTask(null);
 			}}>
 			<div className='titleWrapper'>
