@@ -1,14 +1,9 @@
 import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
+import { devtools, persist } from 'zustand/middleware';
 
 // contains everything we have in our store which is our tasks
 const store = (set) => ({
-	tasks: [
-		{
-			title: 'TestTask',
-			state: 'DONE',
-		},
-	],
+	tasks: [],
 
 	// keep/receive/persist what is being dragged into a column
 	draggedTask: null,
@@ -47,4 +42,4 @@ const store = (set) => ({
 		),
 });
 // we just globalised our tasks
-export const useStore = create(devtools(store));
+export const useStore = create(persist(devtools(store), { name: 'store' }));
