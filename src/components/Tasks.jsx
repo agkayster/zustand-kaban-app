@@ -1,21 +1,21 @@
 import './Tasks.css';
 import React from 'react';
 import classNames from 'classnames';
-
-const STATUS = 'DONE';
+import { useStore } from '../store';
 
 const Tasks = ({ title }) => {
-	// const filtered = useMemo(
-	// 	() => tasks.filter((task) => task.state === state),
-	// 	[tasks, state]
-	// );
-
+	const task = useStore((store) =>
+		store.tasks.find((task) => task.title === title)
+	);
 	return (
 		<div className='task'>
-			<div>{title}</div>
+			{/* title is received from Column.jsx */}
+			<div>{task.title}</div>
 			<div className='bottomWrapper'>
 				<div></div>
-				<div className={classNames('status', STATUS)}>{STATUS}</div>
+				<div className={classNames('status', task.state)}>
+					{task.state}
+				</div>
 			</div>
 		</div>
 	);
