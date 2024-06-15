@@ -1,3 +1,4 @@
+import { produce } from 'immer';
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
 
@@ -11,7 +12,10 @@ const store = (set) => ({
 	// use the set function because we want to manipulate our tasks
 	addTask: (title, state) =>
 		set(
-			(store) => ({ tasks: [...store.tasks, { title, state }] }),
+			produce((store) => {
+				store.tasks.push({ title, state });
+			}),
+			// (store) => ({ tasks: [...store.tasks, { title, state }] }),
 			false,
 			'addTask'
 		),
